@@ -43,3 +43,25 @@ This is the repository for [Kubernetes DNS](http://kubernetes.io/docs/admin/dns/
 1. Submit a PR for the kubernetes/kubernetes repository to switch to the new
    version of the containers.
 1. Build and push for all architectures (`make all-push`)
+
+## To start developing
+
+The [community repository] hosts all information about contributing
+and has documentation, who to contact about what, etc.
+
+If you want to start right away -
+
+##### Develop using [vagrant] 
+
+```
+$ vagrant plugin install vagrant-vbguest
+$ vagrant up
+$ vagrant ssh 
+$ git config --global user.name="Firstname Lastname"
+$ git config --global user.email="myname@org.com"
+$ cd dns
+$ make build
+```
+
+[community repository]: https://github.com/kubernetes/community
+[vagrant]: https://www.vagrantup.com/docs/installation

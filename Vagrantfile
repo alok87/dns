@@ -20,9 +20,12 @@ Vagrant.configure("2") do |config|
   
   config.vm.provider "virtualbox" do |vb|
     # Customize the amount of memory on the VM:
-    vb.memory = "4096"
+    vb.memory = "5096"
   end
- 
+
+  # Mount code
+  config.vm.synced_folder '.', '/home/ubuntu/dns'
+
   # Set up Kube Env
   config.vm.provision "shell", inline: <<-SHELL
     apt-get -qq update 
@@ -36,6 +39,11 @@ Vagrant.configure("2") do |config|
     tar -C /usr/local -xzf go1.7.5.linux-amd64.tar.gz 
     echo export PATH=$PATH:/usr/local/go/bin | tee -a /etc/profile
     echo export GOPATH=/go | tee -a /etc/profile
+    sudo groupadd docker
+    sudo gpasswd -a ${USER} docker
+    sudo service docker restart
+
+    
   SHELL
 
   config.vm.provision "shell", inline: <<-SHELL

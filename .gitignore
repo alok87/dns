@@ -90,3 +90,6 @@ network_closure.sh
 /.*-push
 /.go
 /bin
+
+# Ignore logs
+*.log
